@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>薪酬 · Payroll</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">¥</span><span>薪酬</span><small>PAYROLL</small></div>
+    <nav>
+      <button class="nav active" data-view="overview"><span>⌂</span>总览</button>
+      <button class="nav" data-view="employees"><span>♙</span>员工档案</button>
+      <button class="nav" data-view="org"><span>⌘</span>组织与职级</button>
+      <button class="nav" data-view="adjustments"><span>↗</span>调薪记录</button>
+    </nav>
+    <div class="sidebar-bottom"><div class="period-label">当前结算周期</div><div class="period">2026 / 09</div><div class="saved">● 数据已保存至本地</div></div>
+  </aside>
+  <main>
+    <header><div><p class="eyebrow" id="eyebrow">DASHBOARD</p><h1 id="pageTitle">薪资总览</h1></div><div class="header-actions"><span id="today"></span><button class="primary" id="addEmployee">＋ 新增员工</button></div></header>
+    <section id="overview" class="view visible">
+      <div class="metrics" id="metrics"></div>
+      <div class="grid two"><article class="card"><div class="card-title"><h2>部门薪资分布</h2><span>月固定成本</span></div><div id="deptBars" class="bars"></div></article><article class="card"><div class="card-title"><h2>近期薪资变动</h2><button class="text-btn" data-go="adjustments">查看全部 →</button></div><div id="recentAdjustments" class="timeline"></div></article></div>
+      <article class="card"><div class="card-title"><h2>员工薪资概览</h2><div class="filters"><select id="overviewDept"><option value="all">全部部门</option></select><input id="overviewSearch" placeholder="搜索姓名或工号" /></div></div><div id="overviewTable"></div></article>
+    </section>
+    <section id="employees" class="view"><div class="toolbar"><div class="filters"><select id="employeeDept"><option value="all">全部部门</option></select><select id="employeeType"><option value="all">全部岗位</option></select><input id="employeeSearch" placeholder="搜索姓名、工号" /></div><button class="primary" id="addEmployee2">＋ 新增员工</button></div><article class="card flush"><div id="employeeTable"></div></article></section>
+    <section id="org" class="view"><div class="grid two"><article class="card"><div class="card-title"><h2>部门与岗位</h2><span>共 4 个部门</span></div><div id="orgCards" class="org-cards"></div></article><article class="card"><div class="card-title"><h2>职级薪资带宽</h2><span>税前年薪（万元）</span></div><div id="gradeBands"></div></article></div><article class="note"><b>人员异动提示</b><span>员工跨部门调动时，应同时更新部门、岗位、汇报关系及对应的薪资方案；原薪资与调薪记录会被完整保留。</span></article></section>
+    <section id="adjustments" class="view"><div class="toolbar"><div><p class="eyebrow">COMPENSATION HISTORY</p><h2>薪资调整历史</h2></div><button class="primary" id="newAdjustment">↗ 发起调薪</button></div><article class="card flush"><div id="adjustmentTable"></div></article></section>
+  </main>
+  <div class="modal-wrap" id="modalWrap" aria-hidden="true"><div class="modal" id="modal"></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
